@@ -13,7 +13,7 @@
 	async function fetchImages() {
 		const response = await fetch(
 			`https://api.unsplash.com/search/photos?query=${
-				query || "svelte"
+				query || "nature"
 			}&per_page=6&client_id=${import.meta.env.VITE_API_KEY}`
 		);
 		const data = await response.json();
