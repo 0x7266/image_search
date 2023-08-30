@@ -28,7 +28,22 @@
 		<input type="text" bind:value={query} />
 		<button>SEARCH</button>
 	</form>
-	{#each images as image}
-		<img src={image.urls.small} alt={image.alt_description} />
-	{/each}
+	<div class="images">
+		{#each images as image}
+			<img src={image.urls.small} alt={image.alt_description} />
+		{/each}
+	</div>
 </main>
+
+<style>
+	.images {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+	img {
+		aspect-ratio: 1/1;
+		max-width: 400px;
+		object-fit: cover;
+	}
+</style>
