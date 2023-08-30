@@ -36,14 +36,44 @@
 </main>
 
 <style>
-	.images {
+	main {
+		padding: 2%;
+		align-items: center;
+		background-color: #1f1e25;
+		min-height: 100dvh;
 		display: flex;
-		flex-wrap: wrap;
+		flex-direction: column;
+		gap: 3vh;
+	}
+
+	form {
+		display: flex;
 		gap: 10px;
 	}
+
+	input,
+	button {
+		border: none;
+		border-radius: 10px;
+		font-size: 1.5rem;
+		padding: 8px 10px;
+	}
+
+	button {
+		background-color: #237ee6;
+		color: white;
+	}
+
+	.images {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 10px;
+	}
+
 	img {
 		aspect-ratio: 1/1;
-		max-width: 400px;
+		border-radius: 15px;
+		width: 300px;
 		object-fit: cover;
 	}
 </style>
