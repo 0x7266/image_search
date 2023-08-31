@@ -14,7 +14,7 @@
 	async function fetchImages() {
 		const response = await fetch(
 			`https://api.unsplash.com/search/photos?query=${
-				query || "nature"
+				query || "macos"
 			}&per_page=6&client_id=${import.meta.env.VITE_API_KEY}`
 		);
 		const data = await response.json();
@@ -34,7 +34,7 @@
 			<img
 				src={image.urls.small}
 				alt={image.alt_description}
-				in:fly={{ y: 200, duration: 2000, delay: index * 200 }}
+				in:fly={{ y: 200, duration: 800, delay: index * 80 }}
 			/>
 		{/each}
 	</div>
