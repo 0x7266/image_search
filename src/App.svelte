@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { type Image } from "./types/image";
+	import { fly } from "svelte/transition";
 
 	let images: Image[] = [];
 	let query = "";
@@ -29,8 +30,12 @@
 		<button>SEARCH</button>
 	</form>
 	<div class="images">
-		{#each images as image}
-			<img src={image.urls.small} alt={image.alt_description} />
+		{#each images as image, index (image.id)}
+			<img
+				src={image.urls.small}
+				alt={image.alt_description}
+				in:fly={{ y: 200, duration: 2000, delay: index * 200 }}
+			/>
 		{/each}
 	</div>
 </main>
