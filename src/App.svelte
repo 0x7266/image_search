@@ -6,8 +6,7 @@
 	let images: Image[] = [];
 	let query = "";
 
-	function handleSubmit(e: SubmitEvent) {
-		e.preventDefault();
+	function handleSubmit() {
 		fetchImages();
 	}
 
