@@ -24,7 +24,7 @@
 </script>
 
 <main>
-	<form on:submit={handleSubmit}>
+	<form on:submit|preventDefault={handleSubmit}>
 		<input type="text" bind:value={query} />
 		<button>SEARCH</button>
 	</form>
