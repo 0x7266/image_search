@@ -38,7 +38,7 @@
 <main>
 	<form on:submit|preventDefault={handleSubmit}>
 		<input type="text" bind:value={query} />
-		<button>SEARCH</button>
+		<button>Search</button>
 	</form>
 	<div class="images">
 		{#each images as image, index (image.id)}
@@ -49,7 +49,7 @@
 			/>
 		{/each}
 	</div>
-	<button on:click={handleMore}>MORE...</button>
+	<button on:click={handleMore}>More...</button>
 </main>
 
 <style>
@@ -77,8 +77,12 @@
 	}
 
 	button {
-		background-color: #237ee6;
+		background-color: #4379b8;
 		color: white;
+
+		&:hover {
+			background-color: #194991;
+		}
 	}
 
 	.images {
