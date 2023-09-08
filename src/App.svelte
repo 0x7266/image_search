@@ -5,6 +5,7 @@
 
 	let images: Image[] = [];
 	let query = "";
+	let page = 1;
 
 	function handleSubmit() {
 		fetchImages();
@@ -18,6 +19,17 @@
 		);
 		const data = await response.json();
 		images = data.results;
+	}
+
+	async function handleMore() {
+		page++;
+		const response = await fetch(
+			`https://api.unsplash.com/search/photos?query=${
+				query || "rio de janeiro"
+			}&page=${page}&per_page=6&client_id=${import.meta.env.VITE_API_KEY}`
+		);
+		const data = await response.json();
+		images = [...images, ...data.results];
 	}
 
 	onMount(() => fetchImages());
@@ -37,6 +49,7 @@
 			/>
 		{/each}
 	</div>
+	<button on:click={handleMore}>MORE...</button>
 </main>
 
 <style>
@@ -77,13 +90,16 @@
 	img {
 		aspect-ratio: 1/1;
 		border-radius: 15px;
-		width: 300px;
+		width: 400px;
 		object-fit: cover;
 	}
 
-	@media (min-width: 675px) {
+	@media (min-width: 780px) {
 		.images {
 			grid-template-columns: 1fr 1fr;
+		}
+		img {
+			width: 350px;
 		}
 	}
 
