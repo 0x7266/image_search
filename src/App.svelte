@@ -70,7 +70,7 @@
 
 	.images {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-columns: 1fr;
 		gap: 10px;
 	}
 
@@ -79,5 +79,17 @@
 		border-radius: 15px;
 		width: 300px;
 		object-fit: cover;
+	}
+
+	@media (min-width: 675px) {
+		.images {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		.images {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
 	}
 </style>
