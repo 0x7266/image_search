@@ -4,6 +4,7 @@
 	import { fly } from "svelte/transition";
 	import Icon from "@iconify/svelte";
 	import "@fontsource/poppins";
+	import { getImages } from "./utils/getImages";
 
 	let images: Image[] = [];
 	let query = "";
@@ -14,24 +15,12 @@
 	}
 
 	async function fetchImages() {
-		const response = await fetch(
-			`https://api.unsplash.com/search/photos?query=${
-				query || "rio de janeiro"
-			}&per_page=6&client_id=${import.meta.env.VITE_API_KEY}`
-		);
-		const data = await response.json();
-		images = data.results;
+		images = await getImages(query);
 	}
 
 	async function handleMore() {
 		page++;
-		const response = await fetch(
-			`https://api.unsplash.com/search/photos?query=${
-				query || "rio de janeiro"
-			}&page=${page}&per_page=6&client_id=${import.meta.env.VITE_API_KEY}`
-		);
-		const data = await response.json();
-		images = [...images, ...data.results];
+		images = [...images, ...(await getImages(query, page))];
 	}
 
 	onMount(() => fetchImages());
